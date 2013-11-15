@@ -9,20 +9,17 @@ public class HistogramBuilder<T> {
         this.items = items;
     }
     
-    public <A> void build(AttributeExtractor<T,A> extractor){
-        histogram = new Histogram<>();
+    public <A> Histogram<A> build(AttributeExtractor<T, A> extractor){
+        Histogram<A> histogram = new Histogram<>();
         for (T item : items) {
-            histogram.put(item, getFrequency(item) + 1);
+            A attribute = extractor.extract(item);
+            histogram.put(attribute, histogram.get(attribute) + 1);
         }
+        return histogram;
     }
 
     public Histogram<T> getHistogram() {
         return histogram;
     }
-    
-    public Integer getFrequency (T item){
-        if(histogram.containsKey(item))
-            return histogram.get(item);
-        return 0;
-    }
+  
 }
