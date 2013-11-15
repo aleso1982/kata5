@@ -3,8 +3,7 @@ package kata5;
 public class Kata5 {
 
     public static void main(String[] args) {
-        MockMailLoader loader = new MockMailLoader();
-        HistogramBuilder<Mail> builder = new HistogramBuilder<>(loader.load());
+        HistogramBuilder<Mail> builder = new HistogramBuilder<>(new MockMailLoader().load());
         Histogram<String> histogram = builder.build(new AttributeExtractor<Mail, String>() {
 
             @Override
