@@ -1,6 +1,6 @@
 package kata5;
 
-public interface AttibuteExtractor<E, A> {
+public interface AttributeExtractor<E, A> {
     
     public A extract(E entity);
     

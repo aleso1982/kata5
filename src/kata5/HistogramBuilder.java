@@ -3,8 +3,13 @@ package Kata5;
 public class HistogramBuilder<T> {
     
     private Histogram<T> histogram;
+    private T[] items;
     
-    public void build(T[] items){
+    public HistogramBuilder(T[] items){
+        this.items = items;
+    }
+    
+    public <A> void build(AttributeExtractor<T,A> extractor){
         histogram = new Histogram<>();
         for (T item : items) {
             histogram.put(item, getFrequency(item) + 1);
