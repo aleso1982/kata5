@@ -12,7 +12,7 @@ public class Kata5 {
                 return entity.getDomain();
             }
         });
-        HistogramViewer<String> viewer = new HistogramViewer<>();
+        HistogramViewer<String> viewer = new ChartHistogramViewer<>();
         viewer.show(histogram);
     }
 }
